@@ -13,14 +13,19 @@
 		<h1>Rango says...</h1>
 		
 		<div>
-			hey there partner! <br />
-			<strong>{{ boldmessage }}</strong><br />
+			here is the about page. <br />
+			<strong>{{ boldmessage }}</strong><br /> 
 		</div>
 		
 		<div>
-			<a href="/rango/about/">About</a><br />
+			<a href="/rango/index/">Index</a><br />
 			<img src="{% static 'images/drop.jpg' %}"
 				 alt="Picture of a drop" />
+		</div>
+		
+		<div>
+			<img src="{{ MEDIA_URL }}bridge.jpg"
+				 alt="Picture of a bridge" />
 		</div>
 		
 	</body>
