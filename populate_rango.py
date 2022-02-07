@@ -14,25 +14,25 @@ def populate():
     # through each data structure, and add the data to our models.
 
     python_pages = [
-        {'title': 'Official Python Tutorial',
+        {'title': 'Official Python Tutorial','views':10,
          'url':'http://docs.python.org/3/tutorial/'},
-        {'title':'How to Think like a Computer Scientist',
+        {'title':'How to Think like a Computer Scientist','views':9,
          'url':'http://www.greenteapress.com/thinkpython/'},
-        {'title':'Learn Python in 10 Minutes',
+        {'title':'Learn Python in 10 Minutes','views':8,
          'url':'http://www.korokithakis.net/tutorials/python/'} ]
 
     django_pages = [
-        {'title':'Official Django Tutorial',
+        {'title':'Official Django Tutorial','views':7,
          'url':'https://docs.djangoproject.com/en/2.1/intro/tutorial01/'},
-        {'title':'Django Rocks',
+        {'title':'Django Rocks','views':6,
          'url':'http://www.djangorocks.com/'},
-        {'title':'How to Tango with Django',
+        {'title':'How to Tango with Django','views':5,
          'url':'http://www.tangowithdjango.com/'} ]
 
     other_pages = [
-        {'title':'Bottle',
+        {'title':'Bottle','views':4,
          'url':'http://bottlepy.org/docs/dev/'},
-        {'title':'Flask',
+        {'title':'Flask','views':3,
          'url':'http://flask.pocoo.org'} ]
 
     cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
@@ -47,14 +47,14 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['views'], cat_data['likes'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            add_page(c, p['title'], p['url'], p['views'])
 
     # Print out the categories we have added.
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
             print(f'- {c}: {p}')
 
-def add_page(cat, title, url, views=0):
+def add_page(cat, title, url, views):
     p = Page.objects.get_or_create(category=cat, title=title)[0]
     p.url=url
     p.views=views
