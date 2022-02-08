@@ -21,8 +21,11 @@
 	{% else %}
 	<strong>No pages currently in category.</strong>
 	{% endif %}
-
-	<a href="{% url 'rango:add_page' category.slug %}">Add Page</a> <br />
+	<ul>
+		{% if user.is_authenticated %}
+		<li><a href="{% url 'rango:add_page' category.slug %}">Add Page</a></li>
+		{% endif %}
+	</ul>
 	{% else %}
 	The specified category does not exist.
 	{% endif %}
